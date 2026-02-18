@@ -637,3 +637,594 @@ body {
     opacity: 0.8;
   }
 }
+@keyframes scaleIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-scale {
+  animation: scaleIn 0.6s ease-out;
+}
+/* FADE IN */
+.fade-in {
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* DOOR */
+.door-container {
+  position: relative;
+  width: 260px;
+  height: 360px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.door-left,
+.door-right {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to bottom, #7c3f00, #4b2600);
+  transition: transform 1.5s ease-in-out;
+}
+
+.door-left { left: 0; transform-origin: left; }
+.door-right { right: 0; transform-origin: right; }
+
+.door-container.open .door-left {
+  transform: rotateY(-120deg);
+}
+
+.door-container.open .door-right {
+  transform: rotateY(120deg);
+}
+
+/* LIGHT BURST */
+.light-burst {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle,
+    rgba(255,255,255,0.95) 0%,
+    rgba(255,192,203,0.6) 40%,
+    transparent 70%);
+  animation: burst 2s ease-out forwards;
+}
+
+@keyframes burst {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(2); }
+}
+
+/* SPARK PARTICLES */
+.spark-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.spark-particles::before {
+  content: "✨ ✨ ✨ ✨ ✨ ✨ ✨";
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  animation: sparkle 2s ease-out forwards;
+}
+
+@keyframes sparkle {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(-40px); }
+}
+.door-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 2000px;
+  display: flex;
+}
+
+.door-left,
+.door-right {
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to bottom, #5e2a00, #2b1300);
+  transition: transform 1.5s ease-in-out;
+}
+
+.door-left {
+  transform-origin: left;
+}
+
+.door-right {
+  transform-origin: right;
+}
+
+.door-wrapper.open .door-left {
+  transform: rotateY(-120deg);
+}
+
+.door-wrapper.open .door-right {
+  transform: rotateY(120deg);
+}
+
+.light-burst {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle,
+    rgba(255,255,255,0.9) 0%,
+    rgba(255,192,203,0.6) 40%,
+    transparent 70%);
+  animation: burst 2s ease-out forwards;
+}
+
+@keyframes burst {
+  from { opacity: 0; transform: scale(0.5); }
+  to { opacity: 1; transform: scale(2); }
+}
+.star-particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: twinkle 3s infinite ease-in-out alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.2; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1.3); }
+}
+@keyframes unroll {
+  0% {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+.animate-unroll {
+  transform-origin: top;
+  animation: unroll 1.2s ease-out forwards;
+}
+.style-btn {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 18px 28px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.style-btn:hover {
+  transform: scale(1.05);
+  background: rgba(255,192,203,0.2);
+}
+/* Scroll sticks */
+.scroll-stick {
+  width: 420px;
+  height: 18px;
+  background: linear-gradient(90deg,#8b5e3c,#c89b6d,#8b5e3c);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+/* Scroll paper */
+.scroll-paper {
+  width: 420px;
+  max-height: 0;
+  overflow: hidden;
+  background: url("https://www.transparenttextures.com/patterns/aged-paper.png");
+  background-color: #f5deb3;
+  border-left: 6px solid #8b5e3c;
+  border-right: 6px solid #8b5e3c;
+  transition: max-height 1.2s ease;
+  border-radius: 8px;
+}
+
+.scroll-paper.open {
+  max-height: 420px;
+  padding: 20px;
+}
+
+/* Content scroll */
+.scroll-content {
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+/* Quill cursor */
+.quill-cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,100%{opacity:1;}
+  50%{opacity:0;}
+}
+
+/* Golden sparkles */
+.sparkle {
+  width: 6px;
+  height: 6px;
+  background: gold;
+  border-radius: 50%;
+  position: absolute;
+  animation: sparkleMove 4s infinite linear;
+}
+
+@keyframes sparkleMove {
+  0% { transform: translateY(0); opacity:1; }
+  100% { transform: translateY(-60px); opacity:0; }
+}
+/* Ribbon across scroll */
+.ribbon {
+  width: 440px;
+  height: 12px;
+  background: linear-gradient(90deg,#7c0a02,#c1121f,#7c0a02);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255,0,0,0.5);
+  margin-bottom: -20px;
+  z-index: 2;
+}
+
+/* Wax royal seal */
+.wax-seal {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle,#b30000,#5a0000);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: gold;
+  font-size: 30px;
+  box-shadow: 
+    0 0 15px rgba(255,0,0,0.7),
+    inset 0 0 10px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease;
+  z-index: 3;
+}
+
+.wax-seal:hover {
+  transform: scale(1.1) rotate(8deg);
+}
+
+/* Golden floating sparkles enhancement */
+.sparkle {
+  width: 6px;
+  height: 6px;
+  background: gold;
+  border-radius: 50%;
+  position: absolute;
+  animation: sparkleMove 4s infinite linear;
+  box-shadow: 0 0 8px gold;
+}
+.royal-handwriting {
+  font-family: 'Great Vibes', cursive;
+  letter-spacing: 1px;
+  color: #3b2f2f;
+  text-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+.royal-scroll-area {
+  max-height: 420px;
+  overflow-y: scroll;
+  padding-right: 10px;
+}
+
+/* Hide ugly default scrollbar */
+.royal-scroll-area::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+.wax-seal {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle,#b30000,#5a0000);
+  border-radius: 50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: gold;
+  font-size: 30px;
+  box-shadow: 0 0 20px rgba(255,0,0,0.7);
+  transition: all 0.6s ease;
+}
+
+.seal-broken {
+  transform: scale(1.3) rotate(20deg);
+  opacity: 0;
+}
+.ribbon {
+  width: 440px;
+  height: 12px;
+  background: linear-gradient(90deg,#7c0a02,#c1121f,#7c0a02);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255,0,0,0.5);
+  margin-bottom: -20px;
+  transition: all 0.6s ease;
+}
+
+.seal-broken ~ .ribbon {
+  transform: scaleX(0);
+  opacity: 0;
+}
+/* 🌌 Sparkles */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: gold;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: sparkleFloat 6s infinite ease-in-out;
+}
+@keyframes sparkleFloat {
+  0% { transform: translateY(0); opacity: 0.3; }
+  50% { transform: translateY(-20px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0.3; }
+}
+
+/* 🪵 Royal Scroll Sticks */
+.scroll-stick {
+  width: 420px;
+  height: 22px;
+  background: linear-gradient(90deg, #8b5e34, #c08a52, #8b5e34);
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
+}
+.scroll-stick.bottom {
+  margin-top: -10px;
+}
+
+/* 📜 Scroll Paper */
+.scroll-paper {
+  width: 420px;
+  height: 0;
+  overflow: hidden;
+  background: url("https://www.transparenttextures.com/patterns/paper-fibers.png"),
+              linear-gradient(#e6d3a3, #f3e5c4);
+  border-radius: 8px;
+  box-shadow: inset 0 0 40px rgba(0,0,0,0.2),
+              0 20px 60px rgba(0,0,0,0.5);
+  transition: height 1.5s ease;
+}
+.scroll-paper.open {
+  height: 380px;
+}
+
+/* 📜 Scroll Text Area */
+.royal-scroll-area {
+  height: 100%;
+  overflow-y: auto;
+  padding: 40px;
+  scrollbar-width: thin;
+  scrollbar-color: gold transparent;
+}
+
+/* 👑 Custom Royal Scrollbar */
+.royal-scroll-area::-webkit-scrollbar {
+  width: 8px;
+}
+.royal-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+.royal-scroll-area::-webkit-scrollbar-thumb {
+  background: linear-gradient(#d4af37, #ffd700);
+  border-radius: 20px;
+}
+
+/* 🎀 Ribbon */
+.ribbon {
+  width: 180px;
+  height: 10px;
+  background: linear-gradient(90deg, #8b0000, #ff0040, #8b0000);
+  border-radius: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 15px rgba(255,0,0,0.5);
+}
+
+/* 🕯 Wax Seal */
+.wax-seal {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle at 30% 30%, #ff4d4d, #8b0000);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(255,0,0,0.6);
+  transition: transform 0.3s ease;
+}
+.wax-seal:hover {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+/* 🖋 Royal Handwriting */
+.royal-handwriting {
+  font-family: "Brush Script MT", cursive;
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255,215,0,0.7);
+}
+
+/* 🪶 Quill Cursor */
+.quill-cursor {
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%,100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+/* Glass Crack Lines */
+.crack-lines {
+  background-image: url("https://i.imgur.com/8yKQF0g.png");
+  background-size: cover;
+  opacity: 0;
+  animation: crack 1.2s forwards;
+}
+
+@keyframes crack {
+  to { opacity: 1; }
+}
+
+/* Fade Reveal */
+.animate-fadeIn {
+  animation: fadeIn 1.2s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity:0; transform: scale(0.9); }
+  to { opacity:1; transform: scale(1); }
+}
+
+/* Smoke Melt Effect */
+.smoke-effect {
+  height: 120px;
+  background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+  animation: smokeRise 2s ease-out infinite;
+}
+@keyframes smokeRise {
+  from { transform: translateY(30px); opacity:0.4; }
+  to { transform: translateY(-60px); opacity:0; }
+}
+/* Sparkles */
+.glass-sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: sparkleFloat 6s linear infinite;
+}
+@keyframes sparkleFloat {
+  0% { transform: translateY(0px); opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-40px); opacity: 0; }
+}
+
+/* Neon Glow */
+.neon-glow {
+  box-shadow:
+    0 0 30px rgba(255, 105, 180, 0.4),
+    0 0 60px rgba(0, 200, 255, 0.25);
+}
+
+/* Glass Hidden Blur */
+.glass-hidden {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Glass Reveal */
+.glass-revealed {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Crack Overlay */
+.crack-overlay {
+  position: absolute;
+  inset: 0;
+  background: url('/crack.png') center/cover no-repeat;
+  animation: crackAnim 0.6s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes crackAnim {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Cursor */
+.typing-cursor {
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+/* OLD shimmer remove and use this */
+.shimmer-layer::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -40%;
+  width: 180%;
+  height: 180%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255,255,255,0.25),
+    transparent 40%
+  );
+  animation: crystalShimmer 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes crystalShimmer {
+  0%   { transform: translate(-10%, -10%) rotate(0deg); opacity: 0.2; }
+  50%  { transform: translate(10%, 10%) rotate(15deg); opacity: 0.45; }
+  100% { transform: translate(-10%, -10%) rotate(0deg); opacity: 0.2; }
+}
+/* Crack Level 1 */
+.glass-crack-1 {
+  box-shadow: inset 0 0 25px rgba(255,255,255,0.25);
+  transform: rotate(0.5deg) scale(1.01);
+}
+
+/* Crack Level 2 */
+.glass-crack-2 {
+  box-shadow: inset 0 0 45px rgba(255,255,255,0.35);
+  transform: rotate(-0.5deg) scale(1.02);
+}
+
+/* Final Shatter Animation */
+.glass-shatter {
+  animation: shatter 0.6s forwards ease-out;
+}
+
+@keyframes shatter {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1.05) rotate(2deg);
+  }
+  60% {
+    transform: scale(0.95) rotate(-3deg);
+  }
+  100% {
+    transform: scale(0.7) rotate(6deg) translateY(120px);
+    opacity: 0;
+  }
+}
+
+/* Text Glow */
+.glass-text {
+  font-size: 22px;
+  line-height: 1.6;
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 0 0 18px rgba(255,255,255,0.5);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+.animate-fadeIn {
+  animation: fadeIn 1.2s ease forwards;
+}
