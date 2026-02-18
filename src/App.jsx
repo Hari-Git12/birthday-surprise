@@ -1866,35 +1866,30 @@ There are more little surprises waiting for you ahead ✨
 
 /* 🌈 ROOT */
 export default function App() {
-
   const [stage, setStage] = useState("loading");
-  const [locked, setLocked] = useState(true);
 
-useEffect(() => {
-  const unlockTime = new Date("2026-02-19T00:00:00");
+  useEffect(() => {
+    setTimeout(() => {
+      setStage("intro");
+    }, 3000);
+  }, []);
 
-  const checkTime = () => {
-    if (new Date() >= unlockTime) {
-      setLocked(false); // unlock only
-    }
-  };
-
-  checkTime();
-  const interval = setInterval(checkTime, 1000);
-  return () => clearInterval(interval);
-}, []);
-
-if (locked) {
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center bg-black text-white text-center px-6">
-      <h1 className="text-3xl font-bold mb-4 animate-pulse">
-        🎁 Surprise Unlocks At 12:00 AM
-      </h1>
-      <p className="opacity-70">Just wait a little more… 💖</p>
-    </div>
+    <>
+      {/* Hearts Everywhere */}
+      <FloatingHearts />
+
+      {stage === "loading" && <LoadingScreen />}
+
+      {stage === "intro" && (
+        <IntroScreen onNext={() => setStage("main")} />
+      )}
+
+      {stage === "main" && <MainApp />}
+    </>
   );
-}
-  return (
+
+return (
     <>
       {/* Hearts Everywhere */}
       <FloatingHearts />
